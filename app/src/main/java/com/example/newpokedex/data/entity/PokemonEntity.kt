@@ -1,5 +1,6 @@
 package com.example.newpokedex.data.entity
 
+import com.example.newpokedex.domain.model.Pokemon
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,3 +20,12 @@ data class Name(
 data class Sprites(
     @SerialName("regular") val regularUrl: String,
 )
+
+
+fun PokemonEntity.toModel(): Pokemon {
+    return Pokemon(
+        id = id,
+        name = name.fr,
+        imageUrl = sprites.regularUrl,
+    )
+}
